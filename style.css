@@ -122,7 +122,6 @@ body {
     outline: 0;
     color: white;
     position: relative;
-    bottom: 70%;
     right: 130%;
     border: none;
     text-align: left;
@@ -190,6 +189,7 @@ body {
     opacity: 90%;
     display: flex;
     position: absolute;
+    left: 0%;
     color: white;
     justify-content: center;
 }
