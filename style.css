@@ -1,0 +1,14 @@
+body {
+    background-color:azure;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.content {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.center {
+    text-align: center;
+}
