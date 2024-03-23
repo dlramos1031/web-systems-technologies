@@ -1,0 +1,25 @@
+{
+  "name": "web-sytems-technologies",
+  "version": "1.0.0",
+  "description": "This is the Tailwind CSS Integration branch for the Web Systems Technologies repository.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dlramos1031/web-sytems-technologies.git"
+  },
+  "keywords": [
+    "tailwind"
+  ],
+  "author": "dlramos1031",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dlramos1031/web-sytems-technologies/issues"
+  },
+  "homepage": "https://github.com/dlramos1031/web-sytems-technologies#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
