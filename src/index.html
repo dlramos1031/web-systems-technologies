@@ -3,11 +3,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
-    <title>Table GUI</title>
+    <title>Document</title>
 </head>
 <body>
-    <div class="bg-gray-500 box-content h-50 w-50 p-4 border-4">
-        <h1>Create an Account</h1>
+    <div class="flex block">
+        <div class="bg-slate-300 w-80 min-h-min m-8 p-6 leading-8">
+            <h1 class="text-2xl font-bold my-3">Create an Account</h1>
+            <form name="accform" id="accountForm" action="" onsubmit="return addAccount()">
+                <label class="m-2" for="username">Name</label><br>
+                <input class="w-full my-2 pl-2" type="text" id="username" name="username"><br>
+                <label class="m-2" for="emailaddr">Email</label><br>
+                <input class="w-full my-2 pl-2" type="email" id="emailaddr" name="emailaddr"><br>
+                <label class="m-2" for="role">Role</label><br>
+                <select class="w-full my-2 pl-2" name="role" id="role">
+                    <option value="Guest">Guest</option>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select><br>
+                <input class="w-full mt-5 bg-green-400" type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="bg-slate-300 w-max min-h-min m-8 p-6 leading-8">
+            <h1 class="text-2xl font-bold my-3">Accounts List</h1>
+            <table class="table-auto border-collapse border-2 border-solid border-black" id="accounts">
+                <tr>
+                    <th class="" id="hdrID">ID</th>
+                    <th id="hdrName">Name</th>
+                    <th id="hdrEmail">Email Address</th>
+                    <th id="hdrRole">Role</th>
+                    <th id="hdrActions">Actions</th>
+                </tr>
+            </table>
+        </div>
     </div>
 </body>
 </html>
