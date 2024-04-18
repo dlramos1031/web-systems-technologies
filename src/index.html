@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>Account Table GUI Only</title>
+</head>
+<body>
+    <div class="flex font-mono">
+        <div class="bg-slate-300 w-80 min-h-min m-8 p-6 leading-8 rounded-xl drop-shadow-xl">
+            <h1 class="text-2xl font-bold my-3">Create an Account</h1>
+            <form name="accform" id="accountForm" action="" onsubmit="">
+                <label class="m-2 font-bold" for="username">Name</label><br>
+                <input class="w-full my-2 pl-2 rounded-lg" type="text" id="username" name="username"><br>
+                <label class="m-2 font-bold" for="emailaddr">Email</label><br>
+                <input class="w-full my-2 pl-2 rounded-lg" type="email" id="emailaddr" name="emailaddr"><br>
+                <label class="m-2 font-bold" for="role">Role</label><br>
+                <select class="w-full my-2 p-2 rounded-lg" name="role" id="role">
+                    <option value="Guest">Guest</option>
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                </select><br>
+                <input class="w-full mt-5 bg-green-400 hover:bg-green-600 rounded-lg hover:cursor-pointer" type="submit" value="Submit">
+            </form>
+        </div>
+        <div class="bg-slate-300 w-max min-h-max m-8 p-6 leading-8 rounded-xl drop-shadow-xl">
+            <h1 class="text-2xl font-bold m-5">Accounts List</h1>
+            <table class="table-auto border-collapse border-2 border-solid border-black overflow-hidden" id="accounts">
+                <tr class="h-10">
+                    <th class="w-14 p-2 border-collapse border-2 border-solid border-black overflow-hidden" class="" id="hdrID">ID</th>
+                    <th class="w-80 p-2 border-collapse border-2 border-solid border-black overflow-hidden" id="hdrName">Name</th>
+                    <th class="w-80 p-2 border-collapse border-2 border-solid border-black overflow-hidden" id="hdrEmail">Email Address</th>
+                    <th class="w-20 p-2 border-collapse border-2 border-solid border-black overflow-hidden" id="hdrRole">Role</th>
+                    <th class="w-40 p-2 border-collapse border-2 border-solid border-black overflow-hidden" id="hdrActions">Actions</th>
+                </tr>
+                <tr>
+                    <td class="w-10 p-2 border-collapse border-2 border-solid border-black overflow-hidden">1</td>
+                    <td class="w-80 p-2 border-collapse border-2 border-solid border-black overflow-hidden">Dave Lester Ramos</td>
+                    <td class="w-80 p-2 border-collapse border-2 border-solid border-black overflow-hidden">dlramos1031@gmail.com</td>
+                    <td class="w-20 p-2 border-collapse border-2 border-solid border-black overflow-hidden">Admin</td>
+                    <td class="w-20 p-2 border-collapse border-2 border-solid border-black overflow-hidden">
+                        <button class="bg-slate-400 hover:bg-slate-500 px-2 rounded-lg">Edit</button>
+                        <button class="bg-slate-400 hover:bg-slate-500 px-2 rounded-lg">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
