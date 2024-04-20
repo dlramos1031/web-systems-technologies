@@ -38,19 +38,43 @@ function appendValues() {
         IDinc,
         document.getElementById('username').value,
         document.getElementById('emailaddr').value,
-        document.getElementById('role').value
+        document.getElementById('role').value,
+        null
     ];
     
     // Creating the new cells in the new row
-    for (let i = 0; i < 4; i++) {
+    function createCell() {
         let newCell = newRow.insertCell(-1);
         newCell.setAttribute('class', "py-2 border-collapse overflow-hidden");
-        newCell.innerHTML = values[i];
+        return newCell;
     }
+
+    for (let i = 0; i < 4; i++) {
+        createCell().innerHTML = values[i];
+    }
+
+    // Creating the Action buttons cell
+    const editBtn = document.createElement('button');
+    editBtn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 rounded-lg");
+    editBtn.textContent = "Edit";
+    editBtn.addEventListener('click', function() {});
+    const dltBtn = document.createElement('button');
+    dltBtn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 mx-2 rounded-lg");
+    dltBtn.textContent = "Delete";
+    dltBtn.addEventListener('click', function() {});
+
+    let cell = createCell();
+    cell.appendChild(editBtn);
+    cell.appendChild(dltBtn);
 }
 
 function editValues(id) {
+    
+}
 
+function deleteValues(id) {
+    row = document.getElementById(id);
+    row.parentNode.removeChild(row);
 }
 
 // Automatically adds many accounts (for debugging purposes)
