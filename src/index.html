@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="flex flex-row font-mono">
-        <div class="bg-slate-300 w-80 max-h-fit m-8 p-6 leading-8 rounded-xl drop-shadow-xl">
+        <div class="bg-slate-300 w-80 h-auto m-8 p-6 leading-8 rounded-xl drop-shadow-xl self-start ">
             <h1 class="text-2xl font-bold my-3">Create an Account</h1>
             <form name="accform" id="accform" action="" onsubmit="">
                 <label class="w-full m-2 font-bold" for="username">Name</label><br>
@@ -15,8 +15,8 @@
                 <label class="m-2 font-bold" for="emailaddr">Email</label><br>
                 <input class="w-full my-2 pl-2 rounded-lg" type="email" id="emailaddr" name="emailaddr"><br>
                 <div class="flex flex-row">
-                    <label class="m-2 basis-1/2 font-bold" for="role">Role</label>
-                    <label class="m-2 ml-4 basis-1/2 font-bold">ID</label>
+                    <label class="m-1 ml-2 basis-1/2 font-bold" for="role">Role</label>
+                    <label class="m-1 ml-8 basis-1/2 font-bold">ID</label>
                 </div>
                 <div class="flex space-x-4">
                     <select class="my-2 w-1/2 p-2 rounded-lg" name="role" id="role">
@@ -29,7 +29,7 @@
                 <input class="w-full mt-5 bg-green-400 hover:bg-green-600 rounded-lg hover:cursor-pointer" id="submit" type="submit" value="Submit">
             </form>
         </div>
-        <div class="bg-slate-300 w-max flex-none min-h-max m-8 p-6 leading-8 rounded-xl drop-shadow-xl">
+        <div class="bg-slate-300 w-max h-auto m-8 p-6 leading-8 rounded-xl drop-shadow-xl overflow-y-auto">
             <h1 class="text-2xl font-bold m-5">Accounts List</h1>
             <table class="table-auto border-collapse border-2 border-solid border-black overflow-hidden" id="accounts">
                 <tr class="h-10">

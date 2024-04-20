@@ -22,11 +22,11 @@ btn.addEventListener('click', function(event) {
     // is also the same reason why I put 'click' instead of
     // 'submit' in the addEventListener() argument.
     event.preventDefault();
+
     showID();
 });
 
 function appendValues() {
-
     // Creating the new row
     let newRow = tbl.insertRow(-1);
     newRow.setAttribute('id', ++IDinc);
