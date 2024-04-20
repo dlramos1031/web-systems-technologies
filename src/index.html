@@ -6,10 +6,10 @@
     <title>Account Table GUI Only</title>
 </head>
 <body>
-    <div class="flex font-mono">
-        <div class="bg-slate-300 w-80 min-h-min m-8 p-6 leading-8 rounded-xl drop-shadow-xl">
+    <div class="flex flex-row font-mono">
+        <div class="bg-slate-300 w-80 max-h-fit m-8 p-6 leading-8 rounded-xl drop-shadow-xl">
             <h1 class="text-2xl font-bold my-3">Create an Account</h1>
-            <form name="accform" id="accountForm" action="" onsubmit="">
+            <form name="accform" id="accform" action="" onsubmit="">
                 <label class="m-2 font-bold" for="username">Name</label><br>
                 <input class="w-full my-2 pl-2 rounded-lg" type="text" id="username" name="username"><br>
                 <label class="m-2 font-bold" for="emailaddr">Email</label><br>
@@ -20,7 +20,7 @@
                     <option value="User">User</option>
                     <option value="Admin">Admin</option>
                 </select><br>
-                <input class="w-full mt-5 bg-green-400 hover:bg-green-600 rounded-lg hover:cursor-pointer" type="submit" value="Submit">
+                <input class="w-full mt-5 bg-green-400 hover:bg-green-600 rounded-lg hover:cursor-pointer" id="submit" type="button" value="Submit">
             </form>
         </div>
         <div class="bg-slate-300 w-max min-h-max m-8 p-6 leading-8 rounded-xl drop-shadow-xl">
@@ -46,5 +46,6 @@
             </table>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
