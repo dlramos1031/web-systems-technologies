@@ -1,33 +1,52 @@
-const tbl = document.getElementById('accounts');
-const btn = document.getElementById('submit');
-let IDinc = 0;
+const tbl = document.getElementById('accounts');    // The table
+const btn = document.getElementById('submit');      // The Submit button
+let IDinc = 1;  // Incrementor for the ID
 
-btn.addEventListener('click', function() {
-    let name = document.forms['accform']['username'].value;
-    let email = document.forms['accform']['emailaddr'].value;
-    let role = document.forms['accform']['role'].value;
+// Shows the ID number on the form
+function showID() {
+    document.getElementById('ID').value = IDinc+1;
+}   showID();
 
+btn.addEventListener('click', function(event) {
     // Checking if fields are empty
-    if (name == "" || email == "") {
+    if (document.getElementById('username').value == "" || 
+        document.getElementById('emailaddr').value == "") {
         alert("Please enter both your Name and Email Address.");
-        return false;
+    } else {
+        appendValues();
     }
+
+    // Prevents the site to reload when submitting (NECESSARY)
+    // Before this, I didn't know what to do because everytime
+    // I submit, the site reloads and the table clears. This
+    // is also the same reason why I put 'click' instead of
+    // 'submit' in the addEventListener() argument.
+    event.preventDefault();
+    showID();
+});
+
+function appendValues() {
 
     // Creating the new row
     let newRow = tbl.insertRow(-1);
     newRow.setAttribute('id', ++IDinc);
+
+    // Putting the values in an array for the loop
+    let values = [
+        IDinc,
+        document.getElementById('username').value,
+        document.getElementById('emailaddr').value,
+        document.getElementById('role').value
+    ];
     
     // Creating the new cells in the new row
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         let newCell = newRow.insertCell(-1);
         newCell.setAttribute('class', 'p-2 border-collapse border-2 border-solid border-black overflow-hidden');
+        newCell.innerHTML = values[i];
     }
+}
 
-    appendValues(-1, [IDinc, name, email, role]);
-});
+function editValues(id) {
 
-function appendValues(index, values) {
-    for (let i = 0; i < 4; i++) {
-        tbl.rows[index].cells.item(i).innerHTML = values[i];
-    }
 }
