@@ -7,20 +7,6 @@ function showID() {
     document.getElementById('ID').value = IDinc+1;
 }   showID();
 
-// Creates either edit or delete button in the Action cell
-function createButton(row, type) {
-    const btn = document.createElement('button');
-    if (type == "Edit") {
-        btn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 rounded-lg");
-        btn.textContent = "Edit";
-        btn.addEventListener('click', function() { editValues(row.getAttribute("id")) });
-    } else if (type == "Delete") {
-        btn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 mx-2 rounded-lg");
-        btn.textContent = "Delete";
-        btn.addEventListener('click', function() { deleteValues(row.getAttribute("id")) });
-    }   return btn;
-}
-
 // Create Account button click event
 btn.addEventListener('click', function(event) {
     // Checking if fields are empty
@@ -72,30 +58,85 @@ function appendValues() {
     showID();   
 }
 
-function editValues(id) {
-    row = document.getElementById(id);
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Action Cell
 
-    function changeButton(text) {
-        let btn = row.lastChild; // The Action cell
+// Creates buttone and puts it in the Action cell of a specified row
+function createButton(row, type) {
+    const btn = document.createElement('button');
+    btn.textContent = type;
 
-        function saveValues() {
-            let newData = [row.children[1].innerText, row.children[2], row.children[3]];
-            console.log(newData);
-        }
-
-        if (text == "Save") {
-            
-        } else {
-
-        }
+    // Button appearance
+    let shape = "px-2 rounded-lg ";
+    let slate = "bg-slate-400 hover:bg-slate-500 ";
+    let green = "bg-green-400 hover:bg-green-500 ";
+    let orang = "bg-orange-400 hover:bg-orange-500 ";
+    
+    // Different types of Buttons
+    if (type == "Edit") {
+        btn.setAttribute('class', slate + shape);
+        btn.addEventListener('click', function() { editValues(row) });
+    } else if (type == "Delete") {
+        btn.setAttribute('class', slate + shape);
+        btn.addEventListener('click', function() { deleteValues(row) });
+    } else if (type == "Save") {
+        btn.setAttribute('class', green + shape);
+        btn.addEventListener('click', function() { saveEdit(row) });
+    } else if (type == "Cancel") {
+        // Saving row data
+        let oldData = [
+            row.children[1].innerHTML,    // Name
+            row.children[2].innerHTML,    // Email
+            row.children[3].innerHTML     // Role
+        ];
+        btn.setAttribute('class', orang + shape);
+        btn.addEventListener('click', function() { cancelEdit(row, oldData) });
     }
-
-    changeButton("Save");
-    row.children[1].setAttribute("contenteditable", "true");
+    return btn;
 }
 
-function deleteValues(id) {
-    row = document.getElementById(id);
+function changeMode(row, mode) {
+    let action = row.lastChild;
+    function setEditable(toggle) {
+        row.children[1].setAttribute("contenteditable", toggle);
+        row.children[2].setAttribute("contenteditable", toggle);
+    }
+
+    function removeButtons() {
+        action.removeChild(action.firstChild);
+        action.removeChild(action.firstChild);
+    }
+
+    if (mode == "edit") {
+        setEditable("true");
+        removeButtons();
+        action.appendChild(createButton(row, "Save"));
+        action.appendChild(createButton(row, "Cancel"));
+    } else if (mode == "normal") {
+        setEditable("false");
+        removeButtons();
+        action.appendChild(createButton(row, "Edit"));
+        action.appendChild(createButton(row, "Delete"));
+    }
+}
+
+function saveEdit(row) {
+    changeMode(row, "normal");
+}
+
+function cancelEdit(row, old) {
+    for (let i = 0; i < 3; i++) {
+        row.children[i+1].innerHTML = old[i];
+    }
+    changeMode(row, "normal");
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+function editValues(row) {
+    changeMode(row, "edit");
+}
+
+function deleteValues(row) {
     row.parentNode.removeChild(row);
 }
 
