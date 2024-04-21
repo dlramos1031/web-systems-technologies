@@ -7,6 +7,20 @@ function showID() {
     document.getElementById('ID').value = IDinc+1;
 }   showID();
 
+// Creates either edit or delete button in the Action cell
+function createButton(row, type) {
+    const btn = document.createElement('button');
+    if (type == "Edit") {
+        btn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 rounded-lg");
+        btn.textContent = "Edit";
+        btn.addEventListener('click', function() { editValues(row.getAttribute("id")) });
+    } else if (type == "Delete") {
+        btn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 mx-2 rounded-lg");
+        btn.textContent = "Delete";
+        btn.addEventListener('click', function() { deleteValues(row.getAttribute("id")) });
+    }   return btn;
+}
+
 // Create Account button click event
 btn.addEventListener('click', function(event) {
     // Checking if fields are empty
@@ -51,25 +65,33 @@ function appendValues() {
         createCell().innerHTML = values[i];
     }
 
-    // Creating the Action buttons cell
-    const editBtn = document.createElement('button');
-    editBtn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 rounded-lg");
-    editBtn.textContent = "Edit";
-    editBtn.addEventListener('click', function() {});
-    const dltBtn = document.createElement('button');
-    dltBtn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 mx-2 rounded-lg");
-    dltBtn.textContent = "Delete";
-    dltBtn.addEventListener('click', function() { deleteValues(newRow.getAttribute("id")) });
-
     let cell = createCell();
-    cell.appendChild(editBtn);
-    cell.appendChild(dltBtn);
+    cell.appendChild(createButton(newRow, "Edit"));
+    cell.appendChild(createButton(newRow, "Delete"));
 
     showID();   
 }
 
 function editValues(id) {
-    
+    row = document.getElementById(id);
+
+    function changeButton(text) {
+        let btn = row.lastChild; // The Action cell
+
+        function saveValues() {
+            let newData = [row.children[1].innerText, row.children[2], row.children[3]];
+            console.log(newData);
+        }
+
+        if (text == "Save") {
+            
+        } else {
+
+        }
+    }
+
+    changeButton("Save");
+    row.children[1].setAttribute("contenteditable", "true");
 }
 
 function deleteValues(id) {
