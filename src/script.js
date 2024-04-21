@@ -79,8 +79,9 @@ function createButton(row, type) {
         btn.setAttribute('class', slate + shape);
         btn.addEventListener('click', function() { deleteValues(row) });
     } else if (type == "Save") {
+        const oldRole = row.children[3].innerHTML;
         btn.setAttribute('class', green + shape);
-        btn.addEventListener('click', function() { saveEdit(row) });
+        btn.addEventListener('click', function() { saveEdit(row, oldRole) });
     } else if (type == "Cancel") {
         // Saving row data
         let oldData = [
@@ -99,6 +100,7 @@ function changeMode(row, mode) {
     function setEditable(toggle) {
         row.children[1].setAttribute("contenteditable", toggle);
         row.children[2].setAttribute("contenteditable", toggle);
+        row.children[3].setAttribute("contenteditable", toggle);
     }
 
     function removeButtons() {
@@ -119,7 +121,20 @@ function changeMode(row, mode) {
     }
 }
 
-function saveEdit(row) {
+// Validating the new role
+function isThisARole(role) {
+    let roles = document.getElementById("role").options;
+    for (let i = 0; i < roles.length; i++) {
+        if (role == roles[i].innerHTML) {
+            return true;
+        }
+    }   return false;
+}
+
+function saveEdit(row, oldRole) {
+    if (!isThisARole(row.children[3].innerHTML)) {
+        row.children[3].innerHTML = oldRole;
+    }
     changeMode(row, "normal");
 }
 
