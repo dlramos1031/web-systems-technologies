@@ -1,6 +1,6 @@
 const tbl = document.getElementById('accounts');    // The table
 const btn = document.getElementById('submit');      // The Submit button
-let IDinc = 1;  // Incrementor for the ID
+let IDinc = 0;  // Incrementor for the ID
 
 // Shows the ID number on the form
 function showID() {
@@ -23,8 +23,6 @@ btn.addEventListener('click', function(event) {
     // is also the same reason why I put 'click' instead of
     // 'submit' in the addEventListener() argument.
     event.preventDefault();
-
-    showID();
 });
 
 function appendValues() {
@@ -61,11 +59,13 @@ function appendValues() {
     const dltBtn = document.createElement('button');
     dltBtn.setAttribute('class', "bg-slate-400 hover:bg-slate-500 px-2 mx-2 rounded-lg");
     dltBtn.textContent = "Delete";
-    dltBtn.addEventListener('click', function() {});
+    dltBtn.addEventListener('click', function() { deleteValues(newRow.getAttribute("id")) });
 
     let cell = createCell();
     cell.appendChild(editBtn);
     cell.appendChild(dltBtn);
+
+    showID();   
 }
 
 function editValues(id) {
