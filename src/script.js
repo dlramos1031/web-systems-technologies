@@ -47,10 +47,12 @@ function appendValues() {
         return newCell;
     }
 
+    // Creating each cells and injecting the form values
     for (let i = 0; i < 4; i++) {
         createCell().innerHTML = values[i];
     }
 
+    // Creating the Action cell and putting normal mode buttons
     let cell = createCell();
     cell.appendChild(createButton(newRow, "Edit"));
     cell.appendChild(createButton(newRow, "Delete"));
@@ -67,16 +69,17 @@ function createButton(row, type) {
 
     // Button appearance
     let shape = "px-2 rounded-lg ";
-    let slate = "bg-slate-400 hover:bg-slate-500 ";
     let green = "bg-green-400 hover:bg-green-500 ";
     let orang = "bg-orange-400 hover:bg-orange-500 ";
+    let blue  = "bg-blue-400 hover:bg-blue-500 ";
+    let red   = "bg-red-400 hover:bg-red-500 ";
     
     // Different types of Buttons
     if (type == "Edit") {
-        btn.setAttribute('class', slate + shape);
+        btn.setAttribute('class', blue + shape);
         btn.addEventListener('click', function() { editValues(row) });
     } else if (type == "Delete") {
-        btn.setAttribute('class', slate + shape);
+        btn.setAttribute('class', red + shape);
         btn.addEventListener('click', function() { deleteValues(row) });
     } else if (type == "Save") {
         const oldRole = row.children[3].innerHTML;
